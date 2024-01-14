@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(240, 110, 154);
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container .bx {
+            background-color: #fff;
+            width: 800px;
+            height: auto;
+            padding: 20px;
+            border-radius: 18px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="bx">
+            <img src="" id="random" alt="">
+            <p id="poem"></p>
+        </div>
+    </div>
+
+    <script>
+
+
+        function getPoem(title) {
+            let url = "https://khushitiwari-poetry.hf.space/poem?text=" + title;
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('poem').innerText = data.poem
+                    getImage()
+                })
+        }
+
+        function getImage() {
+            let url = "https://random.imagecdn.app/v1/image?width=500&height=150&category=flower&format=json";
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('random').src = data.url
+                })
+        }
+
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const title = urlParams.get('title')
+        
+
+        if(title != null && title !=''){
+            getPoem(title)
+        }else
+        {
+            window.location.href="./"
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <script>
+        // let url = "https://poetrydb.org/author";
+
+        // let url=" https://poetrydb.org/title"
+        let url = "https://poetrydb.org/title/flower/lines.json"
+
+        function inmyhtml(data) {
+            data.forEach(element => {
+                console.log(element);
+                let temp = `
+             <div class="container">
+           <h3 class="author">${element.author}</h3>
+           </div>
+
+          `
+                document.body.innerHTML += temp
+            });
+
+        }
+
+         fetch(url)
+        .then(x => x.json())
+        .then(y => inmyhtml(y));
+    </script>
+</body>
+
+</html>
