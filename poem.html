@@ -10,11 +10,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            
+
         }
 
         body {
-            background-image: url('./assets/bluebg.png');
+            background-image: url('./assets/bgnew.png');
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
@@ -22,14 +22,16 @@
             justify-content: center;
             align-items: center;
             background-attachment: fixed;
+            padding: 50px 300px;
         }
 
-        #box{
+        #box {
             margin: 0 auto;
             text-align: center;
         }
+
         #poembx {
-            gap: 20px;
+            gap: 40px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -38,76 +40,106 @@
 
 
         .container {
-            background-color: #fff;
-            width: 500px;
-            border-radius: 5px;
-            padding: 50px;
+            background-color: #ffffffbe;
+            width: 320px;
+            border-radius: 20px;
+            padding: 40px;
             padding-top: 10px;
-            height: 350px;
+            height: 280px;
             overflow: auto;
-            
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            backdrop-filter: blur(10px);
         }
 
-        .container::-webkit-scrollbar{
+        ::-webkit-scrollbar {
             display: none;
         }
 
         .container .title {
+            font-size: 19px;
             padding: 5px;
+            border-radius: 12px;
             top: 0;
             background-color: rgb(202, 230, 241)
         }
 
         .container .content {
             margin-top: 20px;
-            font-size: 20px;
-            letter-spacing: 1.2px;
+            font-size: 18px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 7;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 25px;
         }
 
         .container .author {
             margin-top: 15px;
-             font-size: 25px;
-             text-align: center;
-             background-color: rgba(186, 220, 234, 0.762);
+            font-size: 19px;
+            text-align: center;
+            background-color: rgba(186, 220, 234, 0.762);
         }
-        .text{
+
+        .text {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+
         }
-        .text h1{
-            width: 300px;
-            height: 50px;
-            font-size: 50px;
-            color: #fff;
-            padding: 30px;
+
+        .text h1 {
+            font-size: 100px;
+            color: #ffffff;
             margin-bottom: 30px;
         }
 
+        #sear {
+            padding: 15px;
+            width: 500px;
+            max-width: 100%;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.685);
+            border: 1px solid white;
+            outline: none;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 15px;
+            border-radius: 30px;
+            border: 1px solid white;
+            position: absolute;
+            width: 100px;
+            background: rgb(154, 209, 230);
+            color: rgb(65, 65, 65);
+        }
     </style>
 </head>
 
-<body>  
-     <div id="box">
+<body>
+    <div id="box">
         <div class="text">
             <h1>POEMS</h1>
-           <span> <input id="sear" type="text"><button onClick="searchpoem()">Search</button></span>
+            <span> <input id="sear" type="text" placeholder="Search here"><button
+                    onClick="searchpoem()">Search</button></span>
         </div>
-    
-          <div id="poembx">
 
-          </div>
-     </div>
-    
+        <div id="poembx">
+
+        </div>
+    </div>
+
 </body>
 
 <script>
-    
+
 
     function inmyhtml(data) {
-       
+
         data.forEach(element => {
             console.log(element);
             let temp = `
@@ -123,25 +155,25 @@
 
     }
 
-    function getPoem(title){
+    function getPoem(title) {
 
-         let url ="https://poetrydb.org/title,poemcount/"+title+";12";
-         fetch(url)
-        .then(x => x.json())
-        .then(y => inmyhtml(y));
+        let url = "https://poetrydb.org/title,poemcount/" + title + ";12";
+        fetch(url)
+            .then(x => x.json())
+            .then(y => inmyhtml(y));
     }
 
 
-   function searchpoem(){
+    function searchpoem() {
         let val = document.getElementById('sear').value
-        if (val !=""){
-          document.getElementById('poembx').innerHTML="";
-          getPoem(val)
+        if (val != "") {
+            document.getElementById('poembx').innerHTML = "";
+            getPoem(val)
 
-          document.getElementById('sear').value ="";
+            document.getElementById('sear').value = "";
         }
-   }
-    
+    }
+
     getPoem("love")
 
 

@@ -23,7 +23,7 @@
         <div class="container">
             <div class="banner">
                 <div class="inputbx">
-                    <input id="inputbx" type="text">
+                    <input id="search" placeholder="Search" type="text">
                     <button onclick="generate()" >Generate</button>
                 </div>
                 <div class="bannertext">
@@ -38,7 +38,7 @@
 
     <script>
            function generate(){
-            let val = document.getElementById('inputbx').value
+            let val = document.getElementById('search').value
             if(val != ''){
              let url ="generate.html?title="+val 
              window.location.href=url

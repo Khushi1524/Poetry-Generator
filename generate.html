@@ -70,11 +70,11 @@
 
 
         function getPoem(title) {
-            let url = "https://khushitiwari-poetry.hf.space/poem?text=" + title;
+            let url = "https://khushitiwari-poetrygen.hf.space?seed=" + title;
             fetch(url)
                 .then(res => res.json())
                 .then(data => {
-                    document.getElementById('poem').innerText = data.poem
+                    document.getElementById('poem').innerText = data.poetry
                     getImage()
                 })
         }
