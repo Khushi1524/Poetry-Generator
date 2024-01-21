@@ -179,11 +179,12 @@
     </style>
 
     <div id="auth2" class="auth0">
-        <div class="buttons">
+        <div id="btns" class="buttons">
             <button>Sign up</button>
             <button>Login</button>
         </div>
-        <form action="">
+        <div id="forms">
+        <form id="signup" action="">
             <div class="container">
            Name: <input type="text" name="" id="">
            password: <input type="password" name="" id="">
@@ -199,10 +200,16 @@
         </div>
         </form>
         <button onClick="closeauth()" >Close</button>
-        
+    </div>
     </div>
 
     <script>
+
+        function btnsopen(){
+            document.getElementById('btns').style.display = 'flex';
+            document.getElementById('forms').style.display = 'none';
+        }
+
         function closeauth(){
            document.getElementById('auth2').style.display = 'none'; 
         }
