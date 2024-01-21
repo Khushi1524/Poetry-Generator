@@ -4,45 +4,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poets</title>
-</head>
-
-<body>
-
-    <div class="conatiner">
-        <div id="poetbx">
-
-        </div>
-
-    </div>
-
-    <script>
-
-        let url = 'https://poetrydb.org/author';
-
-        function inmyhtml(data) {
-            data.forEach(element => {
-                console.log(element);
-                let temp = `
-             <div class="container">
-           <h3 class="author">${element.author}</h3>
-           </div>
-
-          `
-                document.body.innerHTML += temp
-            });
+    <title>Poems</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
 
         }
 
+        body {
+            background-image: url('./assets/poetbg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background-attachment: fixed;
+            padding: 50px 250px;
+        }
 
+        #box {
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 70px;
+        }
+
+        #poetbx {
+            gap: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .container {
+            background-color: #ffffffbe;
+            width: 350px;
+            border-radius: 20px;
+            padding: 40px;
+            padding-top: 10px;
+            height: 400px;
+            overflow: auto;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            backdrop-filter: blur(10px);
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .container .title {
+            font-size: 20px;
+            border-radius: 12px;
+            top: 0;
+            color:  #f27735;
+            max-width: 300px;
+            max-height: 50px;
+            overflow: hidden;
+            margin-bottom: 7px;
+        }
+
+        .container .content {
+            margin-top: 20px;
+            font-size: 18px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 7;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 25px;
+        }
+
+        .container .author {
+            margin-top: 15px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .container img{
+            width: 100%;
+            height: 90%;
+            object-fit: cover;
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .text h1 {
+            font-size: 100px;
+            color:  #f67f3f;
+            margin-bottom: 30px;
+        }
+
+        #sear {
+            padding: 15px;
+            width: 500px;
+            max-width: 100%;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.685);
+            border: 2px solid #f4b931;
+            outline: none;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 16px;
+            border-radius: 30px;
+            border: 1px solid white;
+            width: 100px;
+            background:  #fe9963cd;
+            color: rgb(65, 65, 65);
+        }
+
+        .searchbox{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="pagenav"></header>
+    <div id="box">
+        <div class="text">
+            <h1>POETS</h1>
+            <span class="searchbox" > <input id="sear" type="text" placeholder="Search poet"><button
+                    onClick="searchpoet()">Search</button></span>
+        </div>
+
+        <div id="poetbx">
+
+        </div>
+    </div>
+
+
+
+</body>
+
+<script>
+
+
+    function inmyhtml(data) {
+
+        data.forEach(author => {
+            console.log(author);
+            let temp = `
+            <div class="container">
+                <img src="./assets/author/${author}.jpg" alt="" onerror="imgError(this)" >
+                <h3 class="author"> ${author}</h3>
+      </div>
+   
+        `
+            document.getElementById('poetbx').innerHTML += temp
+        });
+
+    }
+
+    function getPoet(title) {
+
+        let url = "https://poetrydb.org/authors";
         fetch(url)
             .then(x => x.json())
-            .then(y => inmyhtml(y));
+            .then(y => inmyhtml(y.authors));
+    }
+
+    function imgError(e){
+        e.src = "https://www.neuroconinc.com/wp-content/uploads/2020/07/Neurocon-Inc.-300x300.jpg"
+        e.parentNode.style.display = "none";
+    }
 
 
+    function searchpoem() {
+        let val = document.getElementById('sear').value
+        if (val != "") {
+            document.getElementById('poetbx').innerHTML = "";
+            getPoem(val)
+
+            document.getElementById('sear').value = "";
+        }
+    }
+
+    getPoet()
 
 
-    </script>
-</body>
+</script>
+
+<script src="script.js"></script>
 
 </html>
