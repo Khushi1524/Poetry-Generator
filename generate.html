@@ -32,24 +32,35 @@
             padding: 20px;
             border-radius: 18px;
             font-size: 25px;
+            overflow: hidden;
+            border: 0;
+            
         }
 
-        .container .bx img{
+        .container .bx img {
             width: 100%;
             margin-bottom: 20px;
             border-radius: 5px;
         }
 
-        .container .bx p{
+        .container .bx p {
             line-height: 50px;
         }
 
-        #random{
+        #random {
             border-radius: 20px;
             height: 300px;
+            object-fit:cover;
+            background-image: url('https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/200w.gif?cid=6c09b952l1wm0a1bzhb9o606qykezkffjxevo23yvjsutqef&epn=v1_gifs_search&rid=200w.gif&ct=g');
+            background-repeat: no-repeat;
+            background-size: 200px;
+            background-position:center center ;
+            border: 0;
+            outline: 0;
+          
         }
 
-        #random2{
+        #random2 {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -64,9 +75,9 @@
 
 <body>
     <div class="container">
-        <img src="" id="random2" alt="">
+        <img id="random2" alt="">
         <div class="bx">
-            <img src="" id="random" alt="">
+            <img  id="random" alt="">
             <p id="poem"></p>
         </div>
     </div>
@@ -80,31 +91,50 @@
                 .then(res => res.json())
                 .then(data => {
                     document.getElementById('poem').innerText = data.poetry
-                    getImage()
+                    getImage(title)
                 })
         }
 
-        function getImage() {
-            let url = "https://random.imagecdn.app/v1/image?width=500&height=150&category=nature&format=json";
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('random').src = data.url
-                    document.getElementById('random2').src = data.url
-                })
+        // function getImage() {
+        //     let url = "https://random.imagecdn.app/v1/image?width=500&height=150&category=nature&format=json";
+        //     fetch(url)
+        //         .then(res => res.json())
+        //         .then(data => {
+        //             document.getElementById('random').src = data.url
+        //             document.getElementById('random2').src = data.url
+        //         })
+        // }
+
+        function getImage(value){
+
+        let images = [];
+        const res = fetch(
+            "https://api.pexels.com/v1/search?query="+value+"&orientation=landscape&size=large&per_page=25",
+            {
+                headers: { 'Authorization': 'AFLtwHQ1WZHXcTY476VUJ7qu51qQTtrA94PUERQNzKdz80qqAEuXuwOG' }
+            }).then(res => res.json())
+            .then(json => {
+                images = json['photos']
+
+                images = images[Math.floor(Math.random() * images.length)]['src']['large'];
+
+                console.log(images)
+
+                document.getElementById('random').src = images
+                document.getElementById('random2').src = images
+            });
         }
 
 
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const title = urlParams.get('title')
-        
 
-        if(title != null && title !=''){
+
+        if (title != null && title != '') {
             getPoem(title)
-        }else
-        {
-            window.location.href="./"
+        } else {
+            window.location.href = "./"
         }
     </script>
 </body>

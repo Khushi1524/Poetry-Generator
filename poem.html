@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Poems</title>
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         }
 
         body {
-            background-image: url('./assets/bgnew.png');
+            background-image: url('./assets/a387723c01280c2f5bebceafa05d3812.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
@@ -22,7 +22,7 @@
             justify-content: center;
             align-items: center;
             background-attachment: fixed;
-            padding: 50px 300px;
+            padding: 50px 250px;
         }
 
         #box {
@@ -41,11 +41,11 @@
 
         .container {
             background-color: #ffffffbe;
-            width: 320px;
+            width: 350px;
             border-radius: 20px;
             padding: 40px;
             padding-top: 10px;
-            height: 280px;
+            height: 300px;
             overflow: auto;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
                 rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -57,11 +57,14 @@
         }
 
         .container .title {
-            font-size: 19px;
-            padding: 5px;
+            font-size: 20px;
             border-radius: 12px;
             top: 0;
-            background-color: rgb(202, 230, 241)
+            color:  #f27735;
+            max-width: 300px;
+            max-height: 50px;
+            overflow: hidden;
+            margin-bottom: 7px;
         }
 
         .container .content {
@@ -77,9 +80,8 @@
 
         .container .author {
             margin-top: 15px;
-            font-size: 19px;
+            font-size: 18px;
             text-align: center;
-            background-color: rgba(186, 220, 234, 0.762);
         }
 
         .text {
@@ -102,7 +104,7 @@
             max-width: 100%;
             border-radius: 30px;
             background: rgba(255, 255, 255, 0.685);
-            border: 1px solid white;
+            border: 2px solid #f4b931;
             outline: none;
             margin-bottom: 30px;
             font-size: 18px;
@@ -114,7 +116,7 @@
             border: 1px solid white;
             position: absolute;
             width: 100px;
-            background: rgb(154, 209, 230);
+            background:  #fe9963cd;
             color: rgb(65, 65, 65);
         }
     </style>
@@ -145,8 +147,9 @@
             let temp = `
             <div class="container">
                 <h2 class="title">${element.title}</h2>
+                <hr>
                 <p class="content">${element.lines}</p>
-                <h3 class="author">${element.author}</h3>
+                <h3 class="author">~ ${element.author}</h3>
       </div>
    
         `
@@ -157,7 +160,7 @@
 
     function getPoem(title) {
 
-        let url = "https://poetrydb.org/title,poemcount/" + title + ";12";
+        let url = "https://poetrydb.org/title,poemcount/" + title + ";45";
         fetch(url)
             .then(x => x.json())
             .then(y => inmyhtml(y));

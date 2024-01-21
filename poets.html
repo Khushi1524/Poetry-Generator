@@ -4,19 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Poets</title>
 </head>
 
 <body>
 
+    <div class="conatiner">
+        <div id="poetbx">
 
+        </div>
 
+    </div>
 
     <script>
-        // let url = "https://poetrydb.org/author";
 
-        // let url=" https://poetrydb.org/title"
-        let url = "https://poetrydb.org/title/flower/lines.json"
+        let url = 'https://poetrydb.org/author';
 
         function inmyhtml(data) {
             data.forEach(element => {
@@ -32,9 +34,14 @@
 
         }
 
-         fetch(url)
-        .then(x => x.json())
-        .then(y => inmyhtml(y));
+
+        fetch(url)
+            .then(x => x.json())
+            .then(y => inmyhtml(y));
+
+
+
+
     </script>
 </body>
 
