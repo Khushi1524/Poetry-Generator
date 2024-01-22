@@ -1,0 +1,67 @@
+<!-- Authentication -->
+
+<style>
+
+    .auth0{
+        position: fixed;
+        top: 0;left: 0;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9;
+        background-color:#ffffff92;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        gap: 40px;
+        display: none;
+    }
+
+    .auth0 form .container {
+     display: flex;
+     flex-direction: column;
+     background: #fff;
+     height: fit-content;
+     padding: 10px;
+    }
+
+    .auth0 button{
+        background: rgb(246, 65, 65);
+    }
+
+    .buttons{
+        display: flex;
+    }
+
+    .buttons button{
+     border-radius: 0;
+     height: 40px;
+     
+    }
+
+   
+
+</style>
+
+<div id="auth2" class="auth0">
+    <form id="signup" action="">
+        <div class="container">
+       Name: <input type="text" name="" id="">
+       password: <input type="password" name="" id="">
+       email: <input type="email" name="" id="">
+       contact: <input type="number" name="" id="">
+    </div>
+    </form>
+    
+
+       
+    <form id="login" action="">
+        <div class="container">
+       Name: <input type="text" name="" id="">
+       password: <input type="password" name="" id="">
+    </div>
+    </form>
+    <button onClick="closeauth()" >Close</button>
+</div>
