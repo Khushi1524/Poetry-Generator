@@ -17,17 +17,28 @@
             align-items: center;
             background: #fe9963cd;
             box-shadow: 0 5px 10px rgba(128, 128, 128, 0.427);
+            z-index: 9;
             /* background: linear-gradient(180deg, #FFA3A2 16.9%, #F4EEEB 100%); */
         }
 
-        .logo {
-            font-size: 32px;
-            color: black;
+        .logo{
+            width: 40px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
             text-decoration: none;
-            font-weight: 700;
+            color: black;
+            font-size: 18px;
+            position: relative;
         }
 
-
+        .logo img{
+            width: 100%;
+            position: relative;
+            margin-right: -10px;
+        }
         .navbar a {
             position: relative;
             font-size: 19px;
@@ -56,15 +67,22 @@
             width: 100%;
         }
 
-</style>
+        .navbar #navusername{
+            background: #fff;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
 
+</style>
 <div class="header">
-    <a href="" class="logo">LOGO </a>
+    <a href="" class="logo"><img src="./assets/logo.png" alt="">Poetry</a>
     <div class="navbar">
         <a href="index.html">Home</a>
-        <a href="generate.html">Generate</a>
         <a href="poem.html">Poems</a>
         <a href="poets.html">Poets</a>
-        <a href=""> <img onclick="btnsopen()" src="./assets/login-removebg-preview.png" alt=""></a>
+        <a id="navsignup"  onclick="opensignup()" >Signup</a>
+        <a id="navlogin" onclick="openlogin()">Login</a>
+        <a id="navusername"></a>
+        <a id="navlogout" onclick="logout()" >Logout</a>
     </div>
 </div>

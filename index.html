@@ -23,11 +23,11 @@
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 55.4%, #FE9963 98%);
         }
 
-        .container .imgbx{
+        .container .imgbx {
             position: relative;
         }
 
-        .container .imgbx .fall{
+        .container .imgbx .fall {
             position: absolute;
             top: 150px;
             left: 0;
@@ -37,7 +37,7 @@
 
 
 
-        .container .imgbx img{
+        .container .imgbx img {
             margin-top: 110px;
             width: 650px;
             margin-left: 140px;
@@ -56,7 +56,7 @@
         .inputbx h1 {
             font-size: 70px;
             font-weight: bolder;
-            color:#f4b931;
+            color: #f4b931;
         }
 
         .inputbx .name {
@@ -93,13 +93,13 @@
 
 
 
-        button {
+        .box button {
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
             border: 1px solid white;
-            background:linear-gradient( #FFA3A2 , #f4b931);
+            background: linear-gradient(#FFA3A2, #f4b931);
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
             color: rgb(65, 65, 65);
             width: 80px;
@@ -107,7 +107,7 @@
         }
 
         button img {
-          width: 50%;
+            width: 50%;
         }
     </style>
 </head>
@@ -134,97 +134,17 @@
         </div>
     </div>
 
-    <style>
-
-        .auth0{
-            position: fixed;
-            top: 0;left: 0;
-            position: fixed;
-            width: 100vw;
-            height: 100vh;
-            z-index: 9;
-            background-color:#ffffff92;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .auth0 form .container {
-         display: flex;
-         flex-direction: column;
-         background: #fff;
-         height: fit-content;
-         padding: 10px;
-        }
-
-        .auth0 button{
-            background: rgb(246, 65, 65);
-        }
-
-        .buttons{
-            display: flex;
-        }
-
-        .buttons button{
-         border-radius: 0;
-         height: 40px;
-         
-        }
-
-       
-
-    </style>
-
-    <div id="auth2" class="auth0">
-        <div id="btns" class="buttons">
-            <button>Sign up</button>
-            <button>Login</button>
-        </div>
-        <div id="forms">
-        <form id="signup" action="">
-            <div class="container">
-           Name: <input type="text" name="" id="">
-           password: <input type="password" name="" id="">
-           email: <input type="email" name="" id="">
-           contact: <input type="number" name="" id="">
-        </div>
-        </form>
-
-        <form id="login" action="">
-            <div class="container">
-           Name: <input type="text" name="" id="">
-           password: <input type="password" name="" id="">
-        </div>
-        </form>
-        <button onClick="closeauth()" >Close</button>
-    </div>
-    </div>
-
-    <script>
-
-        function btnsopen(){
-            document.getElementById('btns').style.display = 'flex';
-            document.getElementById('forms').style.display = 'none';
-        }
-
-        function closeauth(){
-           document.getElementById('auth2').style.display = 'none'; 
-        }
-
-        function openauth(){
-            document.getElementById('auth2').style.display = 'flex'; 
-        }
-    </script>
 
     <script>
         function generate() {
-            let val = document.getElementById('search').value
-            if (val != '') {
-                let url = "generate.html?title=" + val
-                window.location.href = url
+            if (localStorage.getItem('userdata')) {
+                let val = document.getElementById('search').value
+                if (val != '') {
+                    let url = "generate.html?title=" + val
+                    window.location.href = url
+                }
+            }else{
+                alert('Login')
             }
         }
 

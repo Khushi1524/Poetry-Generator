@@ -1,0 +1,121 @@
+<!-- Authentication -->
+
+<style>
+    .auth0 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9;
+        background-color: #ffffff92;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        gap: 40px;
+        display: none;
+    }
+
+    .auth0 .container {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        height: fit-content;
+        padding: 40px;
+        border-radius: 30px;
+    }
+
+    .auth0 .container .head {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .auth0 .container h1 {
+        font-size: 30px;
+        color: #f4b931;
+    }
+
+    .auth0 form .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .auth0 form .buttons button,
+    .auth0 form .buttons .close {
+        width: 130px;
+        padding: 10px;
+        background: #f8c859ba;
+        font-size: 20px;
+        border-radius: 20px;
+        margin-top: 15px;
+        border-style: none;
+        text-align: center;
+    }
+
+    .auth0 form .buttons button:hover {
+        background: #f4b931;
+    }
+
+    .auth0 form {
+        width: 400px;
+        padding: 20px;
+        border: 2px solid #edb941;
+        border-radius: 30px;
+    }
+
+    .auth0 form .container input {
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+
+    .auth0 form .container label {
+        font-size: 18px;
+    }
+</style>
+
+<div id="auth2" class="auth0">
+
+    <form id="signup">
+        <div class="container">
+            <div class="head">
+                <h1>Signup</h1>
+            </div>
+            <label for="s-name">Name : </label><input type="text" name="name" id="s-name">
+            <label for="s-email">Email : </label> <input type="email" name="email" id="s-email">
+            <label for="s-contact">Contact : </label> <input type="number" name="contact" id="s-contact">
+            <label for="s-password">Password : </label> <input type="password" name="password" id="s-password">
+            <div class="buttons">
+                <div class="close" onClick="closeauth()">Close</div>
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+
+
+
+    <form id="login" action="">
+        <div class="container">
+            <div class="head">
+                <h1>Login</h1>
+            </div>
+            <label for="l-email">Email : </label><input type="email" name="email" id="l-email">
+            <label for="l-password">Password : </label> <input type="password" name="password" id="l-password">
+            <div class="buttons">
+                <div class="close" onClick="closeauth()">Close</div>
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+   
+
+</script>
