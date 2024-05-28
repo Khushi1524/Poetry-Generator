@@ -129,6 +129,57 @@
         .searchbox{
             display: none;
         }
+
+        
+        @media (max-width:700px) {
+            body {
+                padding: 0px 50px;
+            }
+
+            #box {
+                padding-top: 90px;
+            }
+            
+            .container {
+                width: 250px;
+            }
+
+            ::-webkit-scrollbar {
+                display: none;
+            }
+
+            .container .title {
+                font-size: 15px;
+                margin-bottom: 7px;
+            }
+
+            .container .content {
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .container .author {
+                margin-top: 15px;
+                font-size: 15px;
+            }
+
+            .text h1 {
+                font-size: 50px;
+                margin-bottom: 20px;
+            }
+
+            #sear {
+                padding: 15px;
+                width: 150px;
+                margin-bottom: 30px;
+                font-size: 14px;
+            }
+
+            .text button {
+                padding: 16px;
+                width: 80px;
+            }
+        }
     </style>
 </head>
 
@@ -159,7 +210,7 @@
             console.log(author);
             let temp = `
             <div class="container">
-                <img src="./assets/author/${author}.jpg" alt="" onerror="imgError(this)" >
+                <img src="./author/${author}.jpg" alt="" onerror="imgError(this)" >
                 <h3 class="author"> ${author}</h3>
       </div>
    

@@ -13,9 +13,6 @@
             box-sizing: border-box;
         }
 
-        body {
-            /* background-color: rgb(240, 110, 154); */
-        }
 
         .container {
             width: 100vw;
@@ -69,6 +66,26 @@
             left: 0;
             z-index: -2;
             
+        }
+
+        @media (width<450px) {
+            .container{
+               display: block;
+               height: auto;
+            }
+
+            .container .bx{
+              width: 100%;
+              font-size: 15px;
+            }
+
+            .container .bx p{
+                line-height: 30px;
+            }
+
+            #random2{
+                display: none;
+            }
         }
     </style>
 </head>

@@ -18,17 +18,16 @@ function setauth() {
     let username = localStorage.getItem("userdata");
     username = JSON.parse(username);
 
-    navsignup.style.display = 'none';
-    navlogin.style.display = 'none';
-    navlogout.style.display = 'inline-block';
-    navusername.style.display = 'inline-block';
+    navsignup.style.display = "none";
+    navlogin.style.display = "none";
+    navlogout.style.display = "inline-block";
+    navusername.style.display = "inline-block";
     navusername.innerHTML = username.name;
   } else {
-   
-    navsignup.style.display = 'inline-block';
-    navlogin.style.display = 'inline-block';
-    navlogout.style.display = 'none';
-    navusername.style.display = 'none';
+    navsignup.style.display = "inline-block";
+    navlogin.style.display = "inline-block";
+    navlogout.style.display = "none";
+    navusername.style.display = "none";
     navusername.innerHTML = "";
   }
 }
@@ -92,7 +91,7 @@ function getauth() {
           });
       });
     });
-  };
+}
 
 getauth();
 
@@ -114,9 +113,19 @@ function opensignup() {
 
 //logout
 
-function logout(){
-  localStorage.removeItem('userdata');
+function logout() {
+  localStorage.removeItem("userdata");
   window.location.reload();
 }
 
+//navbar
 
+function menuopen() {
+  const navmenu = document.getElementsByClassName("navbar")[0];
+  navmenu.style.left = '0';
+}
+
+function menuclose(){
+  const navmenu = document.getElementsByClassName("navbar")[0];
+  navmenu.style.left="-100vw";
+}

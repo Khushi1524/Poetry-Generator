@@ -35,8 +35,6 @@
             width: 500px;
         }
 
-
-
         .container .imgbx img {
             margin-top: 110px;
             width: 650px;
@@ -109,6 +107,75 @@
         button img {
             width: 50%;
         }
+
+
+        @media screen and (width<450px) {
+            .container {
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 55.4%, #FE9963 98%);
+                flex-direction: column;
+                height: auto;
+                margin: 0;
+                padding: 0; 
+            }
+
+            .container .imgbx {
+                width: 100%;
+            }
+
+            .container .imgbx img {
+                width: 100%;
+                margin: 0px;
+                margin-top:80px ;
+                background-position-y: 300px;
+            }
+
+            .container .imgbx .fall {
+                width:100%;
+                top: 0;
+            }
+
+            .inputbx {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 15px;
+                margin: 0;
+            }
+
+            .inputbx h1 {
+                font-size: 30px;
+            }
+
+            .inputbx .name {
+                width: 100%;
+            }
+
+            .inputbx .name p {
+                font-size: 15px;
+                font-weight: 300;
+                color: gray;
+            }
+
+            .box {
+              width: auto;
+              padding-top: 20px;
+            }
+
+            .box input {
+                font-size: 14px;
+                width: auto;
+                padding: 15px;
+                width: 100%;
+            }
+
+            .box button {
+               height: 50px;
+               min-width: 50px;
+               max-width: 50px;
+            }
+
+
+        }
     </style>
 </head>
 
@@ -123,8 +190,8 @@
         <div class="inputbx">
             <h1>Poetry Generator</h1>
             <div class="name">
-                <p>"Poetry Haven: Where words sprout wings, soaring into realms of timeless expression and creative
-                    bliss Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium quo corporis!."</p>
+                <p>PoetryGen: Where words sprout wings, soaring into realms of timeless expression and creative
+                    bliss Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium quo corporis!.</p>
             </div>
             <div class="box">
                 <input id="search" placeholder="Generate here" type="text">
@@ -137,13 +204,13 @@
 
     <script>
         function generate() {
-            if (localStorage.getItem('userdata')) {
+            if (!localStorage.getItem('userdata')) {
                 let val = document.getElementById('search').value
                 if (val != '') {
                     let url = "generate.html?title=" + val
                     window.location.href = url
                 }
-            }else{
+            } else {
                 alert('Login')
             }
         }

@@ -1,93 +1,155 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
     * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
 
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fe9963cd;
+        box-shadow: 0 5px 10px rgba(128, 128, 128, 0.427);
+        z-index: 9;
+    }
+
+    .logo {
+        width: 40px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 5px;
+        font-weight: bold;
+        text-decoration: none;
+        color: rgb(70, 70, 70);
+        font-size: 19px;
+        letter-spacing: 1.5px;
+        position: relative;
+        font-family: 'Satisfy', cursive;
+    }
+
+    .logo img {
+        width: 100%;
+        position: relative;
+        margin-right: -10px;
+    }
+
+    .navbar a {
+        position: relative;
+        font-size: 19px;
+        color: black;
+        font-weight: 500;
+        text-decoration: none;
+        margin-left: 40px;
+        cursor: pointer;
+    }
+
+    .navbar img {
+        width: 30px;
+    }
+
+    .navbar a::before {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #f56415;
+        transition: .3s;
+    }
+
+    .navbar a:hover::before {
+        width: 100%;
+    }
+
+    .navbar #navusername {
+        background: rgba(255, 255, 255, 0.503);
+        padding: 5px 7px;
+        border-radius: 10px;
+        border: 1px solid #f56415;
+    }
+
+    .navbtn {
+        display: none;
+    }
+
+    @media (width<400px) {
         .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 100px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #fe9963cd;
-            box-shadow: 0 5px 10px rgba(128, 128, 128, 0.427);
-            z-index: 9;
+            padding: 12px;
+            width: 100vw;
         }
 
-        .logo{
-            width: 40px;
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            gap: 5px;
-            font-weight: bold;
-            text-decoration: none;
-            color: rgb(70, 70, 70);
-            font-size: 19px;
-            letter-spacing: 1.5px;
-            position: relative;
-            font-family: 'Satisfy', cursive;
+        .logo {
+            font-size: 15px;
         }
 
-        .logo img{
-            width: 100%;
-            position: relative;
-            margin-right: -10px;
-        }
-        .navbar a {
-            position: relative;
-            font-size: 19px;
-            color: black;
-            font-weight: 500;
-            text-decoration: none;
-            margin-left: 40px;
-            cursor: pointer;
-        }
-
-        .navbar img{
+        .logo img {
             width: 30px;
         }
 
-        .navbar a::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background:  #f56415;
-            transition: .3s;
+        .navbar {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: #fe9963fd;
+            top: 0;
+            left: -100vh;
+            padding: 0;
         }
 
-        .navbar a:hover::before {
+        .navbar a {
+            display: block;
+            padding: 10px 10px;
+            border-bottom: 1px solid black;
+            margin-left: 0;
+        }
+
+        #navlogin,
+        #navsignup {
             width: 100%;
+            display: block;
         }
 
-        .navbar #navusername{
-            background:rgba(255, 255, 255, 0.503);
-            padding: 5px 7px;
+        .navbtn {
+            display: block;
+            width: 30px;
+            background:  #fe9963cd;
+            border: none;
+        }
+
+        #close {
+            padding: 8px 10px;
+            width: 70px;
+            background: rgb(254, 66, 66);
+            margin-top: 20px;
+            margin: 8px;
             border-radius: 10px;
-            border: 1px solid #f56415;
+            color: #fff;
         }
 
+    }
 </style>
 <div class="header">
-    <a href="" class="logo"><img src="./assets/logo.png" alt="">POETRY❀˖°</a>
-    <div class="navbar">
+    <a href="" class="logo"><img src="./assets/logo.png" alt="">POETRYGEN</a>
+    <div class="navbar" id="navbarmenu">
         <a href="index.html">Home</a>
         <a href="poem.html">Poems</a>
         <a href="poets.html">Poets</a>
-        <a id="navsignup"  onclick="opensignup()">Signup</a>
+        <a id="navsignup" onclick="opensignup()">Signup</a>
         <a id="navlogin" onclick="openlogin()">Login</a>
         <a id="navusername"></a>
         <a id="navlogout" onclick="logout()">Logout</a>
+        <button onclick="menuclose()" id="close" class="navbtn">Close</button>
     </div>
+    <button onclick="menuopen()" class="navbtn">≣</button>
 </div>
-
